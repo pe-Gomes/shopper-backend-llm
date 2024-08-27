@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2020",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,6 +14,11 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*", "*.config.mjs", ".eslintrc.mjs"],
+  "include": [
+    "./src/**/*",
+    "*.config.mjs",
+    ".eslintrc.mjs",
+    "drizzle.config.ts"
+  ],
   "exclude": ["node_modules"]
 }
