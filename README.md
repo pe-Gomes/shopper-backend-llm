@@ -37,11 +37,12 @@ com docker compose.
 ### Costumer (Consumidor)
 
 - id: UUID
+- costumer_code: text
 
-### Readings (Leituras)
+### Readings / Measurements (Leituras)
 
 - id: UUID
-- costumer_code: UUID (references costumer ID)
+- costumer_code: UUID (references costumer_code)
 - measure_type: enum('water', 'gas')
 - measure_value: integer
 - measure_datetime: timestamp
