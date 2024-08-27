@@ -1,0 +1,22 @@
+{
+  "name": "teste-shopper-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx --watch ./src/app.ts"
+  },
+  "keywords": [],
+  "author": "Pedro Cardoso Gomes Bernardes",
+  "dependencies": {
+    "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^22.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  }
+}
