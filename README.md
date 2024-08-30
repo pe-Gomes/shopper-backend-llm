@@ -7,21 +7,21 @@ O serviço foi desenvolvido utilizando TypeScript e o framework Fastify.
 
 ## Endpoints
 
-[ ] POST /upload - Recebe uma imagem em base64 e envia para análise do Gemini.
-[ ] GET /confirm - Valida ou corrige a análise.
-[ ] GET /list - Retorna todas as leituras de água e gás realizadas por usuário/consumidor.
+- [X] POST /upload - Recebe uma imagem em base64 e envia para análise do Gemini.
+- [X] GET /confirm - Valida ou corrige a análise.
+- [X] GET /list - Retorna todas as leituras de água e gás realizadas por usuário/consumidor.
 
 ## Requisitos Funcionais
 
-[ ] Deve receber uma imagem em base64 e enviá-la para análise do Gemini.
-[ ] A descrição provida pelo Gemini deverá ser persistida em um banco de dados e
-retornar um link temporário para visualizar a imagem avaliada.
-[ ] Cada usuário poderá ter apenas conferir uma leitura de água e uma de gás do mês.
-[ ] O usuário/consumidor poderá validar e/ou corrigir a leitura de água e gás de
+- [X] Deve receber uma imagem em base64 e enviá-la para análise do Gemini.
+- [X] A descrição provida pelo Gemini deverá ser persistida em um banco de dados e
+retornar um link temporário da imagem avaliada.
+- [X] Cada usuário poderá ter apenas conferir uma leitura de água e uma de gás do mês.
+- [X] O usuário/consumidor poderá validar e/ou corrigir a leitura de água e gás de
 uma análise em específico.
-[ ] O usuário/consumidor poderá visualizar todas as leituras de água e gás que
+- [X] O usuário/consumidor poderá visualizar todas as leituras de água e gás que
 foram realizadas.
-[ ] O usuário/consumidor poderá filtrar a listagem de leituras por "WATER"
+- [X] O usuário/consumidor poderá filtrar a listagem de leituras por "WATER"
 ou "GAS", diferenciando letras maiúsculas de minúsculas.
 
 ## Requisitos Não Funcionais
