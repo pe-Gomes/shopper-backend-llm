@@ -8,6 +8,14 @@ export interface CostumerRepository {
 
 export interface MeasurementRepository {
   create(data: CreateMeasurementInput): Promise<Measurement>
+  findById(uuid: string): Promise<Measurement | null>
+  confirmMeasurementValue({
+    measureValue,
+    measureId,
+  }: {
+    measureValue: number
+    measureId: string
+  }): Promise<Measurement>
   listByCostumerCodeAndMeasureType(search: {
     costumerCode: string
     measureType?: 'WATER' | 'GAS'

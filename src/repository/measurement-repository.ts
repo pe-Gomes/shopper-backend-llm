@@ -10,6 +10,30 @@ export class DrizzleMeasurementRepository implements MeasurementRepository {
     return measurement
   }
 
+  async findById(id: string) {
+    const measurement = await db.query.measurements.findFirst({
+      where: (table, { eq }) => eq(table.id, id),
+    })
+
+    return measurement ?? null
+  }
+
+  async confirmMeasurementValue({
+    measureValue,
+    measureId,
+  }: {
+    measureValue: number
+    measureId: string
+  }) {
+    const [updated] = await db
+      .update(measurements)
+      .set({ measureValue, isConfirmed: true })
+      .where(eq(measurements.id, measureId))
+      .returning()
+
+    return updated
+  }
+
   async listByCostumerCodeAndMeasureType(search: {
     costumerCode: string
     measureType?: 'WATER' | 'GAS'
