@@ -8,6 +8,7 @@ const environmentSchema = z.object({
   DATABASE_USER: z.string().default('admin'),
   DATABASE_PASSWORD: z.string().default('changeme'),
   DATABASE_NAME: z.string().default('measurements_llm'),
+  GEMINI_API_KEY: z.string(),
 })
 
 const parsedEnv = environmentSchema.safeParse({
@@ -18,6 +19,7 @@ const parsedEnv = environmentSchema.safeParse({
   DATABASE_USER: process.env.DATABASE_USER,
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
   DATABASE_NAME: process.env.DATABASE_NAME,
+  GEMINI_API_KEY: process.env.GEMINI_API_KEY,
 })
 
 if (!parsedEnv.success) {
