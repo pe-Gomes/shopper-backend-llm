@@ -11,6 +11,7 @@ server.get('/status', async (_, res) => {
 void server.register(appRoutes)
 
 server.setErrorHandler(async (err, _, res) => {
+  console.error(err)
   if (err instanceof AppError) {
     await res.status(err.statusCode).send(err.format())
   }
