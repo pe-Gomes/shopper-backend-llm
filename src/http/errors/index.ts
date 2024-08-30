@@ -47,6 +47,15 @@ export class ConfirmationDuplicateError extends AppError {
   }
 }
 
+export class MeasureNotFoundError extends AppError {
+  readonly errorCode = 'MEASURE_NOT_FOUND'
+  readonly statusCode = 404
+
+  constructor() {
+    super('Leitura do mês já realizada.')
+  }
+}
+
 export class MeasuresNotFoundError extends AppError {
   readonly errorCode = 'MEASURES_NOT_FOUND'
   readonly statusCode = 404
