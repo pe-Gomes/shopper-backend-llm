@@ -1,0 +1,146 @@
+{
+  "id": "e56672f8-571f-46a5-98c5-a3f5f1df003b",
+  "prevId": "06a06caf-62bc-4074-bac1-3ab88195be6d",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.costumers": {
+      "name": "costumers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "costumer_code": {
+          "name": "costumer_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "unique_costumer_code_constraint": {
+          "name": "unique_costumer_code_constraint",
+          "columns": [
+            {
+              "expression": "costumer_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "costumer_code_idx": {
+          "name": "costumer_code_idx",
+          "columns": [
+            {
+              "expression": "costumer_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "costumers_costumer_code_unique": {
+          "name": "costumers_costumer_code_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "costumer_code"
+          ]
+        }
+      }
+    },
+    "public.measurements": {
+      "name": "measurements",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "costumer_code": {
+          "name": "costumer_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "measure_type": {
+          "name": "measure_type",
+          "type": "varchar(15)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "measure_value": {
+          "name": "measure_value",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "measure_datetime": {
+          "name": "measure_datetime",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "measure_image": {
+          "name": "measure_image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_confirmed": {
+          "name": "is_confirmed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "measurements_costumer_code_costumers_costumer_code_fk": {
+          "name": "measurements_costumer_code_costumers_costumer_code_fk",
+          "tableFrom": "measurements",
+          "tableTo": "costumers",
+          "columnsFrom": [
+            "costumer_code"
+          ],
+          "columnsTo": [
+            "costumer_code"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

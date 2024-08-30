@@ -16,7 +16,7 @@ export const measurements = pgTable('measurements', {
   costumerCode: text('costumer_code').references(() => costumers.costumerCode, {
     onDelete: 'set null',
   }),
-  measurementType: varchar('measurement_type', { length: 15 })
+  measureType: varchar('measure_type', { length: 15 })
     .$type<MeasurementTypeOptions>()
     .notNull(),
   measureValue: integer('measure_value').notNull(),

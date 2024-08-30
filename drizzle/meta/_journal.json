@@ -8,6 +8,13 @@
       "when": 1724781150236,
       "tag": "0000_add_consumer_and_measurements_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1725027165826,
+      "tag": "0001_change_measurements_type_column_name",
+      "breakpoints": true
     }
   ]
 }

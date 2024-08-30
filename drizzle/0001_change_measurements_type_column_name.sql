@@ -1,0 +1,1 @@
+ALTER TABLE "measurements" RENAME COLUMN "measurement_type" TO "measure_type";
