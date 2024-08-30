@@ -3,6 +3,7 @@ import { type MeasurementRepository } from './interfaces'
 import { db } from '@/infra/db'
 import { measurements } from '@/infra/db/schema'
 import { and, eq } from 'drizzle-orm'
+import dayjs from 'dayjs'
 
 export class DrizzleMeasurementRepository implements MeasurementRepository {
   async create(data: CreateMeasurementInput) {
@@ -15,6 +16,34 @@ export class DrizzleMeasurementRepository implements MeasurementRepository {
       where: (table, { eq }) => eq(table.id, id),
     })
 
+    return measurement ?? null
+  }
+
+  async findByCostumerCodeAndDatetimeMonth({
+    costumerCode,
+    measureDatetime,
+    measureType,
+  }: {
+    costumerCode: string
+    measureDatetime: Date
+    measureType: 'WATER' | 'GAS'
+  }) {
+    const firstDayOfMonth = dayjs(new Date(measureDatetime))
+      .startOf('month')
+      .toDate()
+    const lastDayOfMonth = dayjs(new Date(measureDatetime))
+      .endOf('month')
+      .toDate()
+
+    const measurement = await db.query.measurements.findFirst({
+      where: (table, { and, eq, lte, gte }) =>
+        and(
+          eq(table.costumerCode, costumerCode),
+          eq(table.measureType, measureType),
+          gte(table.measureDatetime, firstDayOfMonth),
+          lte(table.measureDatetime, lastDayOfMonth)
+        ),
+    })
     return measurement ?? null
   }
 

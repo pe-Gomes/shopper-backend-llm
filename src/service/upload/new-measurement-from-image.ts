@@ -1,4 +1,4 @@
-import { InternalError } from '@/http/errors'
+import { DoubleReportError, InternalError } from '@/http/errors'
 import {
   type CostumerRepository,
   type MeasurementRepository,
@@ -38,6 +38,17 @@ export class NewMeasurementFromImageService {
     if (!costumer) {
       console.error('costumer undefined on NewMeasurementFromImageService')
       throw new InternalError()
+    }
+
+    const isDuplicateMeasure =
+      await this.measurementRepository.findByCostumerCodeAndDatetimeMonth({
+        costumerCode: costumer.costumerCode,
+        measureDatetime: data.measureDatetime,
+        measureType: data.measureType,
+      })
+
+    if (isDuplicateMeasure) {
+      throw new DoubleReportError()
     }
 
     const file = await saveFileFromBase64Image({
